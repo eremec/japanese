@@ -15,11 +15,6 @@
 
 (def parsed-kanji
   (read-string (slurp "kanji.edn"))
-  #_(parse-xlsx "kanji.xlsx" "Japanese Kanji" {:A :kanji
-                                             :E :english
-                                             :J :components}))
-
-#_(spit "kanji.edn" (with-out-str (clojure.pprint/pprint (vec parsed-kanji))))
 
 (def parsed-radical (parse-xlsx "radical.xlsx" "Kanji Radical English" {:A :radical :E :meaning}))
 
@@ -38,9 +33,9 @@
 
 (def prepared
   (->> parsed-kanji
-       (mapv #(-> %
-                 (assoc :parsed-radical (parse-radical-components %))
-                 (assoc :parsed-kanji (parse-kanji-components %))))))
+       (mapv #(assoc %
+                     :parsed-radical (parse-radical-components %)
+                     :parsed-kanji (parse-kanji-components %)))))
 
 (defn resolve-components [n acc]
   (let [components (set (concat (:parsed-kanji acc)
