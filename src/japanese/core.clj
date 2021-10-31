@@ -157,6 +157,9 @@
         res (-> params http/request deref)]
     (-> res :body (json/parse-string keyword))))
 
+(defn run [_]
+  (println (sync-anki)))
+
 (filter #(= "word" (:type %)) cards)
 
 (comment
