@@ -1,0 +1,11 @@
+* ANKI Japanese app
+** General idea
+   The application helps to learn Japanese chars using graph connections and the Anki method
+** How it works
+   - Draw your chars graph with relations (e.g in draw.io)
+   - Save it as XML
+   - Upload to Anki server through Anki client
+   - Use your Anki client with your own cards
+   - Have fun!
+     
+     
